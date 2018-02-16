@@ -80,6 +80,7 @@ def interface(in_file, percentile_file, out_file):
         for i, line in enumerate(reader):
             if len(line) != 21:
                 print(line, "invalid line. Not conforming to Data Dictionary. skipping...", file=sys.stderr)
+                continue
             clean_line(line)
             current = Donation(line[0], line[1], line[2], line[3], line[4], line[5])
             # TODO: How to do these [if continue] checks in a function?
