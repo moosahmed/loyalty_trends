@@ -13,7 +13,7 @@ def bad_data(line):
     Takes a line
     Checks id data is valid
     If valid it Removes all fields that are not being considered in this program
-    refer: https://classic.fec.gov/finance/disclosure/metadata/DataDictionaryContributionsbyIndividuals.shtml
+    Refer: https://classic.fec.gov/finance/disclosure/metadata/DataDictionaryContributionsbyIndividuals.shtml
     """
     if len(line) != 21:
         print(line, "invalid line. Not conforming to Data Dictionary. skipping...", file=sys.stderr)
@@ -28,7 +28,7 @@ def bad_data(line):
 def emit(out_file, cmte_id, zip_code, year, perc_value, total, count):
     """
     Takes an output file and 6 values to emit
-    emits all values in output '|' delimited
+    Emits all values in output file '|' delimited
     """
     emit = [cmte_id, zip_code, year, perc_value, total, count]
     print(emit)
@@ -47,7 +47,7 @@ def finalize(donor_dict, donor_values, zip_five, percentile, out_file):
 
     Feeds percentile into get_calcs() function.
     Feeds output file and emit values into emit() function.
-    breaks loop for every qualifying contribution. 1 qualifying contribution -> 1 emit.
+    Breaks loop for every qualifying contribution. 1 qualifying contribution -> 1 emit.
     """
     for donation in range(0, len(donor_values) - 1):
         ongoing = Donor(donor_values[-1][0], donor_values[-1][1], donor_values[-1][2])
@@ -62,8 +62,8 @@ def finalize(donor_dict, donor_values, zip_five, percentile, out_file):
 
 def get_calcs(list_of_amounts, percentile):
     """
-    takes a list of transaction amounts and the percentile value
-    returns the value at that percentile rank, total and count
+    Takes a list of transaction amounts and the percentile value
+    Returns the value at that percentile rank, total and count
     """
     float_amounts = [float(amount) for amount in list_of_amounts]
     float_amounts.sort()
@@ -76,9 +76,9 @@ def get_calcs(list_of_amounts, percentile):
 
 def get_values(dix, key, value):
     """
-    takes a dictionary, key and value
-    appends value to key
-    returns all values of that key
+    Takes a dictionary, key and value
+    Appends value to key
+    Returns all values of that key
     """
     if key not in dix:
         dix[key] = []
@@ -90,7 +90,7 @@ def get_values(dix, key, value):
 def invalid_line(current):
     """
     Checks for malformed, invalid, or disqualifying data
-    if valid, returns false
+    If valid, returns false
     """
     if not current.cmte_id:
         print(current, "invalid No CMTE_ID. skipping...", file=sys.stderr)
@@ -115,18 +115,18 @@ def invalid_line(current):
 
 def round_up(num):
     """
-    takes a float
-    returns an integer that is rounded up if .50
+    Takes a float
+    Returns an integer that is rounded up if .50
     Rounding .5's up as per https://en.wikipedia.org/wiki/Percentile and challenge instructions
-    regular python function round. rounds down from .5
+    Regular python function round. rounds down from .5
     """
     return int(Decimal(num).quantize(0, ROUND_HALF_UP))
 
 
 def sum_floats_list(f_list, place_form):
     """
-    takes a list of floats, and place (i.e 1, .01 etc.)
-    returns a float that is the sum limited to a decimal place
+    Takes a list of floats, and place (i.e 1, .01 etc.)
+    Returns a float that is the sum limited to a decimal place
     Ensures output will not have trailing decimal numbers
     """
     place = str(place_form)
@@ -162,7 +162,7 @@ def interface(in_file, percentile_file, out_file):
 
 def cli_interface():
     """
-    cli wrapper to go from commandline to function
+    Cli wrapper to go from commandline to function
     """
     try:
         in_file, percentile_file, out_file = sys.argv[1:]
