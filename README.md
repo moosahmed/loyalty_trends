@@ -5,18 +5,18 @@
 4. [Repo directory structure](README.md#repo-directory-structure)
 
 # Challenge Description
-(https://github.com/InsightDataScience/donation-analytics)
+https://github.com/InsightDataScience/donation-analytics
 
 # Solution Approach
 Python3 solution to the Insight Data Engineering Coding Challenge described above.
 
 The entire solution is contained in `./src/campaign_loyalty_trends.py`. 5 python packages used `csv` `sys` `collections` `decimal` and `operator`.
 
-Function descriptions are provided at the top of each function. This solution iterates the `input.txt` line by line. Each qualifying line appends the output.txt with one emit. Thus making this code streamable and able to feed into a running front-end interface.
+Function descriptions are provided at the top of each function. This solution iterates the input line by line. Each qualifying line appends the output with one emit. Thus making this code streamable and able to feed into a running front-end interface.
 
 All fields that are not considered from the input are removed at the start regardless of what they contain. Then each line goes through a series of qualifiers, computations are done on every qualifying line. 
 
-It is recommended to keep ouput directory for any tests run through insight_testsuite. 
+It is recommended to keep ouput directory empty for any tests run through insight_testsuite. 
 
 `/run.sh` wraps `./src/campaign_loyalty_trends.py`
 
